@@ -1,0 +1,24 @@
+{
+  "name": "rest-serv-node",
+  "version": "1.0.0",
+  "description": "node REST server for multi purpose",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "rest",
+    "node.js"
+  ],
+  "author": "Emiro Trechy",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.11.1",
+    "mongoose": "^5.12.12"
+  }
+}

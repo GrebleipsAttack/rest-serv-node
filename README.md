@@ -8,7 +8,7 @@ actually under development
 
 *** configure ***
 
-edit .env.example file and rename .env
+edit .example.env file and rename .env
 
 ```
 PORT=xxxx

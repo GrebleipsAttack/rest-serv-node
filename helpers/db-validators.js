@@ -16,10 +16,10 @@ const emailExist = async(email='') => {
     }
 }
 
-const userIdExist = async(id) => {
-    const userIdExist = await User.findById({id});
+const userIdExist = async(_id) => {
+    const userIdExist = await User.findById({_id});
     if (!userIdExist){
-        throw  new Error(`${id} is not a valid id`);
+        throw  new Error(`${_id} is not a valid id`);
     }
 }
 

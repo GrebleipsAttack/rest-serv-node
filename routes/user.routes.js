@@ -4,12 +4,10 @@ const { check } = require('express-validator');
 const { userGet,
         userPut,
         userPost,
-        userPatch,
         userDelete } = require('../controllers/user.controllers');
 const { validateFields } = require('../middlewares/validateFields');
 const router = Router();
 
-// CRUD ROUTES
 router.get('/', userGet);
 
 router.put('/:id',[

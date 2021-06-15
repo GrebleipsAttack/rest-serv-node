@@ -1,6 +1,6 @@
 {
   "name": "rest-serv-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "node REST server for multi purpose",
   "main": "index.js",
   "scripts": {

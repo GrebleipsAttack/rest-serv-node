@@ -2,6 +2,7 @@ const { response } = require('express');
 const User =  require('../models/user.model');
 const bcryptjs = require('bcryptjs');
 const { generateJWT } = require('../helpers/generate-jwt');
+const { googleVeriff } = require('../helpers/google-veriff');
 
 
 const login = async(req, res = response) => {
@@ -28,11 +29,55 @@ const login = async(req, res = response) => {
     } catch (err) {
         console.log(err)
         return res.status(500).json({
-            msg: 'Internal server error, please contact with Admin\n'
+            msg: 'Internal server error, please contact with Admin'
         })
     }
 }
 
+const googleSignIn = async(req, res = response) => {
+    const { id_token } = req.body;
+    
+    try{
+        const {email, name, img} = await googleVeriff(id_token);
+        let user = await User.findOne({ email });
+
+        if (!user){
+            const data = {
+                name,
+                email,
+                password: ':p',
+                img,
+                google: true
+            };
+
+            user = new User(data);
+            await user.save();
+        }
+
+        if (!user.status){
+            res.status(401).json({
+                msg: 'user banned'
+            })
+        }
+
+        const token = await generateJWT(user.id);
+       
+        res.json({
+            msg: 'Google SignIn OK',
+            user,
+            token
+        })
+
+    } catch(err){
+        res.status(400).json({
+            msg: 'invalid token'
+        })
+    }
+
+
+}
+
 module.exports = {
-    login
+    login,
+    googleSignIn
 }

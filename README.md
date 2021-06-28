@@ -20,3 +20,7 @@ SECRET_KEY=put your custom private key here
 *** Run ***
 
 ``` npm start ```
+
+
+API DOCS
+```https://documenter.getpostman.com/view/12439056/TzecCQMi```
